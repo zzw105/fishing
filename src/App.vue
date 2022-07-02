@@ -16,9 +16,10 @@ export default defineComponent({
       isPlay: false,
     };
   },
-  mounted() {
-    console.log();
-    this.isPlay = this.$route.path !== "/";
+  watch: {
+    $route(val) {
+      this.isPlay = val.path !== "/";
+    },
   },
 });
 </script>
@@ -29,6 +30,9 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 body,

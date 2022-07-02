@@ -1,16 +1,21 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="@/assets/svg/fishingLogo.svg" />
-    <el-button size="large" type="primary">开始钓鱼</el-button>
+    <el-button size="large" type="primary" @click="toGame">开始钓鱼</el-button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import router from "@/router";
 
 export default defineComponent({
   name: "Home",
-  components: {},
+  methods: {
+    toGame: () => {
+      router.push({ name: "Game" });
+    },
+  },
 });
 </script>
 
