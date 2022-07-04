@@ -1,10 +1,10 @@
 import { defineStore } from "pinia";
 
 export const fishingGroundStore = defineStore("fishingGround", {
-  state: () => {
+  state: (): fishingGroundStateProps => {
     return {
-      allFishingGround: {
-        groundOne: {
+      allFishingGround: [
+        {
           id: 1,
           name: "一号渔场",
           fish: [
@@ -22,7 +22,7 @@ export const fishingGroundStore = defineStore("fishingGround", {
             },
           ],
         },
-        groundTwo: {
+        {
           id: 2,
           name: "二号渔场",
           fish: [
@@ -40,9 +40,14 @@ export const fishingGroundStore = defineStore("fishingGround", {
             },
           ],
         },
-      },
+      ],
     };
   },
-  getters: {},
+  getters: {
+    //
+    getAllFishingGround(state): fishingGroundStateProps["allFishingGround"] {
+      return state.allFishingGround;
+    },
+  },
   actions: {},
 });

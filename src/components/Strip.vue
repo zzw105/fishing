@@ -75,7 +75,7 @@ const toFishing = () => {
   }
 };
 
-// 结束钓鱼
+// 开始钓鱼
 const fishingStar = () => {
   setIntervalNum.value = setInterval(() => {
     let num = targetLineStyle.left;

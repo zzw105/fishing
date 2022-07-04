@@ -1,20 +1,16 @@
-declare module "@vue/runtime-core" {
-  interface targetStyleProps {
-    left: number;
-    width: number;
-  }
-
-  interface targetLineStyleProps {
-    left: number;
-    width: number;
-  }
-
-  type NodeJS = NodeJS;
+interface fishProps {
+  id: number;
+  name: string;
+  price: number;
+  difficulty: number;
 }
 
-declare global {
-  interface userStateProps {
-    userName: string;
-  }
+interface fishingGroundProps {
+  id: number;
+  name: string;
+  fish: fishProps[];
 }
-export {};
+
+interface fishingGroundStateProps {
+  allFishingGround: fishingGroundProps[];
+}
