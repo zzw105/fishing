@@ -10,11 +10,13 @@ export const userStore = defineStore("user", {
     };
   },
   getters: {
+    // 获取标题
     getTitle(state) {
       return state.title;
     },
   },
   actions: {
+    // 修改标题内容
     setTitle(pal: string) {
       this.title = pal;
     },

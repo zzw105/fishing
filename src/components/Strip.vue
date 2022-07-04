@@ -32,23 +32,21 @@ import {
   targetStyleProps,
   NodeJS,
 } from "@vue/runtime-core";
+import { ElMessage } from "element-plus";
 // import { useStore } from "vuex";
 // import { key } from "@/store";
-import { storeToRefs } from "pinia";
-import { userStore } from "@/pinia/user";
+// import { storeToRefs } from "pinia";
+// import { userStore } from "@/pinia/user";
 
-// reactive
+// 目标块
 const targetStyle = reactive<targetStyleProps>({ left: 50, width: 30 });
-const targetLineStyle = reactive<targetLineStyleProps>({ left: 6, width: 20 });
 
-// ref
+// 玩家条
+const targetLineStyle = reactive<targetLineStyleProps>({ left: 6, width: 2 });
 const targetLineDirection = ref<number>(1);
+
 const setIntervalNum = ref<NodeJS.Timer>();
 const isFishing = ref<boolean>(false);
-
-const store = userStore();
-const { getterName } = storeToRefs(store);
-const { changeName } = store;
 
 // 开始或停止钓鱼
 const toFishing = () => {
@@ -64,9 +62,15 @@ const toFishing = () => {
       targetLineStyle.left + targetLineStyle.width >= targetStyle.left &&
       targetLineStyle.left <= targetStyle.left + targetStyle.width
     ) {
-      console.log("钓到了");
+      ElMessage({
+        type: "success",
+        message: "钓到啦",
+      });
     } else {
-      console.log("没钓到");
+      ElMessage({
+        type: "error",
+        message: "没钓到",
+      });
     }
   }
 };
