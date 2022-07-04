@@ -1,17 +1,17 @@
 import { defineStore } from "pinia";
 
 export const userStore = defineStore("user", {
-  state: () => {
+  state: (): userStoreProps => {
     return {
       title: "",
       money: 100,
       fish: [],
-      nowGround: 0,
+      nowGround: null,
     };
   },
   getters: {
     // 获取标题
-    getTitle(state) {
+    getTitle(state): string {
       return state.title;
     },
   },
@@ -19,6 +19,10 @@ export const userStore = defineStore("user", {
     // 修改标题内容
     setTitle(pal: string) {
       this.title = pal;
+    },
+    // 设置当前渔场
+    setGround(pal: fishingGroundProps) {
+      this.nowGround = pal;
     },
   },
 });

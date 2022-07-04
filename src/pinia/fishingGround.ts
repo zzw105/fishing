@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-
 export const fishingGroundStore = defineStore("fishingGround", {
   state: (): fishingGroundStateProps => {
     return {

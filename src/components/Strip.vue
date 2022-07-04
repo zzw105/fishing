@@ -27,11 +27,6 @@
 
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from "vue";
-import {
-  targetLineStyleProps,
-  targetStyleProps,
-  NodeJS,
-} from "@vue/runtime-core";
 import { ElMessage } from "element-plus";
 // import { useStore } from "vuex";
 // import { key } from "@/store";

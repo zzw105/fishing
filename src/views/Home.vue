@@ -9,7 +9,7 @@
 import router from "@/router";
 
 const toGame = () => {
-  router.push({ name: "Game" });
+  router.push({ name: "FishingGround" });
 };
 </script>
 

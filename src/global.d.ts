@@ -1,3 +1,13 @@
+interface targetStyleProps {
+  left: number;
+  width: number;
+}
+
+interface targetLineStyleProps {
+  left: number;
+  width: number;
+}
+
 interface fishProps {
   id: number;
   name: string;
@@ -13,4 +23,11 @@ interface fishingGroundProps {
 
 interface fishingGroundStateProps {
   allFishingGround: fishingGroundProps[];
+}
+
+interface userStoreProps {
+  title: string;
+  money: number;
+  fish: fishProps[];
+  nowGround: fishingGroundProps | null;
 }

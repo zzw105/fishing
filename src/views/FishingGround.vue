@@ -24,4 +24,17 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped lang="less">
+.FishingGround {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+</style>
