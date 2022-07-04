@@ -1,11 +1,13 @@
 <template>
-  <div class="title">钓鱼游戏 v0.0.1</div>
+  <div class="title">{{ text }}</div>
 </template>
 
-<script>
-export default {
-  name: "Title",
-};
+<script lang="ts" setup>
+import { defineProps } from "vue";
+
+const props = defineProps<{
+  text: string;
+}>();
 </script>
 
 <style lang="less" scoped>

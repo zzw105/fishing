@@ -2,39 +2,89 @@
   <div class="stripBox">
     <div class="lineBox">
       <div class="line"></div>
-      <div ref="targetRef" class="target"></div>
-      <div class="targetLine"></div>
+      <div
+        :style="{
+          width: targetStyle.width + 'px',
+          left: targetStyle.left + 'px',
+        }"
+        class="target"
+      ></div>
+      <div
+        :style="{
+          width: targetLineStyle.width + 'px',
+          left: targetLineStyle.left + 'px',
+        }"
+        class="targetLine"
+      ></div>
     </div>
-    <div class="btnBox"></div>
+    <div class="btnBox">
+      <el-button @click="toFishing"
+        >{{ isFishing ? "拉杆" : "下杆" }}
+      </el-button>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from "vue";
-import { targetStyleProps } from "@vue/runtime-core";
+import {
+  targetLineStyleProps,
+  targetStyleProps,
+  NodeJS,
+} from "@vue/runtime-core";
+// import { useStore } from "vuex";
+// import { key } from "@/store";
+import { storeToRefs } from "pinia";
+import { userStore } from "@/pinia/user";
 
-const targetStyle = reactive<targetStyleProps>({ left: "50px", width: "30px" });
-const targetLineStyle = reactive<targetStyleProps>({
-  left: "6px",
-  width: "2px",
-});
+// reactive
+const targetStyle = reactive<targetStyleProps>({ left: 50, width: 30 });
+const targetLineStyle = reactive<targetLineStyleProps>({ left: 6, width: 20 });
 
-// const setIntervalNum = ref<number>(0);
+// ref
+const targetLineDirection = ref<number>(1);
+const setIntervalNum = ref<NodeJS.Timer>();
+const isFishing = ref<boolean>(false);
 
-const targetRef = ref<HTMLDivElement>();
+const store = userStore();
+const { getterName } = storeToRefs(store);
+const { changeName } = store;
+
+// 开始或停止钓鱼
+const toFishing = () => {
+  isFishing.value = !isFishing.value;
+  if (isFishing.value) {
+    // 开始钓鱼
+    fishingStar();
+    targetLineStyle.left = 6;
+  } else {
+    // 完成钓鱼
+    clearInterval(setIntervalNum.value);
+    if (
+      targetLineStyle.left + targetLineStyle.width >= targetStyle.left &&
+      targetLineStyle.left <= targetStyle.left + targetStyle.width
+    ) {
+      console.log("钓到了");
+    } else {
+      console.log("没钓到");
+    }
+  }
+};
+
+// 结束钓鱼
+const fishingStar = () => {
+  setIntervalNum.value = setInterval(() => {
+    let num = targetLineStyle.left;
+    if (num <= 10) targetLineDirection.value = 1;
+    if (num >= 250 - targetLineStyle.width) targetLineDirection.value = -1;
+    num += targetLineDirection.value;
+    targetLineStyle.left = num;
+  }, 15);
+};
 
 onMounted(() => {
-  let num = 6;
-  let go = 1;
-  setInterval(() => {
-    if (num === 5) go = 1;
-    if (num === 200) go = -1;
-    num += go;
-    targetLineStyle.left = num + "px";
-    console.log(targetLineStyle.left);
-  }, 10);
+  // fishingStar();
 });
-console.log(targetStyle);
 </script>
 
 <style lang="less" scoped>
@@ -54,7 +104,7 @@ console.log(targetStyle);
     .line {
       height: 10px;
       width: 250px;
-      background-color: blue;
+      background-color: #d6d6ff;
       border-radius: 5px;
     }
 
@@ -62,16 +112,12 @@ console.log(targetStyle);
       background-color: red;
       position: absolute;
       height: 10px;
-      width: v-bind("targetStyle.width");
-      left: v-bind("targetStyle.left");
     }
 
     .targetLine {
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.58);
       position: absolute;
-      height: 10px;
-      width: v-bind("targetLineStyle.width");
-      left: v-bind("targetLineStyle.left");
+      height: 14px;
     }
   }
 }

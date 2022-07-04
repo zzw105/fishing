@@ -5,18 +5,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts" setup>
 import router from "@/router";
 
-export default defineComponent({
-  name: "Home",
-  methods: {
-    toGame: () => {
-      router.push({ name: "Game" });
-    },
-  },
-});
+const toGame = () => {
+  router.push({ name: "Game" });
+};
 </script>
 
 <style lang="less" scoped>

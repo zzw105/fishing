@@ -1,26 +1,23 @@
 <template>
   <div id="app">
-    <Title v-if="isPlay" />
+    <Title v-if="isPlay" :text="title" />
     <router-view />
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-import Title from "@/components/Title";
+<script lang="ts" setup>
+import { ref, watch } from "vue";
+import Title from "@/components/Title.vue";
+import { userStore } from "@/pinia/user";
+import { useRoute } from "vue-router";
+import { storeToRefs } from "pinia";
 
-export default defineComponent({
-  components: { Title },
-  data() {
-    return {
-      isPlay: false,
-    };
-  },
-  watch: {
-    $route(val) {
-      this.isPlay = val.path !== "/";
-    },
-  },
+const isPlay = ref<boolean>(false);
+const route = useRoute();
+const store = userStore();
+const { title } = storeToRefs(store);
+watch(route, (val) => {
+  isPlay.value = val.path !== "/";
 });
 </script>
 

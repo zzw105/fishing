@@ -1,8 +1,20 @@
 declare module "@vue/runtime-core" {
   interface targetStyleProps {
-    left: string;
-    width: string;
+    left: number;
+    width: number;
   }
+
+  interface targetLineStyleProps {
+    left: number;
+    width: number;
+  }
+
+  type NodeJS = NodeJS;
 }
 
-export {}; // Important! See note.
+declare global {
+  interface userStateProps {
+    userName: string;
+  }
+}
+export {};

@@ -4,13 +4,13 @@
   </div>
 </template>
 
-<script>
-import Strip from "@/components/Strip";
+<script lang="ts" setup>
+import Strip from "@/components/Strip.vue";
+import { userStore } from "@/pinia/user";
 
-export default {
-  name: "Game",
-  components: { Strip },
-};
+const store = userStore();
+const { setTitle } = store;
+setTitle("123");
 </script>
 
 <style lang="less" scoped>
