@@ -6,9 +6,17 @@ export const userStore = defineStore("user", {
       title: "",
       money: 0,
       fish: [],
+      items: [],
       nowGround: {
         id: 1,
         name: "未选择渔场",
+        ground: [
+          {
+            id: 0,
+            number: 0,
+            autoFish: false,
+          },
+        ],
         fish: [
           {
             id: 0,

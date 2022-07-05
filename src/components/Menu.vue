@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <div @click="add">当前金钱：{{ money }}</div>
+    <div>当前金钱：{{ money }}</div>
     <div @click="save">保存</div>
     <div @click="load">读取</div>
   </div>
@@ -12,12 +12,8 @@ import { computed } from "@vue/reactivity";
 import { cryptoLoadStorage, cryptoSaveStorage } from "@/utils";
 
 const _userStore = userStore();
-const { setMoney, setUserAll } = _userStore;
+const { setUserAll } = _userStore;
 const money = computed(() => _userStore.getMoney);
-
-const add = () => {
-  setMoney(1);
-};
 
 const save = () => {
   cryptoSaveStorage("data", JSON.stringify(_userStore.$state));

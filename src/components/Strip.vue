@@ -89,8 +89,8 @@ onMounted(() => {
 <style lang="less" scoped>
 .stripBox {
   width: 260px;
-  height: 50px;
-  background-color: rgba(170, 187, 204, 0.5);
+  height: 60px;
+  //   background-color: rgba(170, 187, 204, 0.5);
 
   .lineBox {
     position: relative;
@@ -99,6 +99,7 @@ onMounted(() => {
     justify-content: center;
     height: 20px;
     background-color: #bbb;
+    margin-bottom: 5px;
 
     .line {
       height: 10px;

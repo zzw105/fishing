@@ -15,19 +15,33 @@ interface fishProps {
   difficulty: number;
 }
 
+interface groundProps {
+  id: number;
+  number: number;
+  autoFish: boolean;
+}
+
 interface fishingGroundProps {
   id: number;
   name: string;
   fish: fishProps[];
+  ground: groundProps[];
 }
 
 interface fishingGroundStateProps {
   allFishingGround: fishingGroundProps[];
 }
 
+interface itemProps {
+  id: number;
+  name: string;
+  number: number;
+}
+
 interface userStoreProps {
   title: string;
   money: number;
   fish: fishProps[];
+  items: itemProps[];
   nowGround: fishingGroundProps;
 }
