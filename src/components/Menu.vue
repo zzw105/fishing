@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <div @click="add">当前金钱：{{ getMoney }}</div>
+    <div @click="add">当前金钱：{{ money }}</div>
     <div @click="save">保存</div>
     <div @click="load">读取</div>
   </div>
@@ -13,7 +13,7 @@ import { cryptoLoadStorage, cryptoSaveStorage } from "@/utils";
 
 const _userStore = userStore();
 const { setMoney, setUserAll } = _userStore;
-const getMoney = computed(() => _userStore.getMoney);
+const money = computed(() => _userStore.getMoney);
 
 const add = () => {
   setMoney(1);
