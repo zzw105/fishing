@@ -12,11 +12,11 @@ import Strip from "@/components/Strip.vue";
 import { onMounted } from "vue";
 
 // 仓库相关
-const store = userStore();
-const { setTitle } = store;
+const _userStore = userStore();
+const { setTitle, getNowGround } = _userStore;
 
 onMounted(() => {
-  setTitle("渔场");
+  setTitle(getNowGround.name);
 });
 </script>
 

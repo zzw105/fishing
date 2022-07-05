@@ -9,6 +9,7 @@
     },
     "dependencies": {
         "core-js": "^3.6.5",
+        "crypto-js": "^4.1.1",
         "element-plus": "^2.2.8",
         "pinia": "^2.0.14",
         "vue": "^3.0.0",
@@ -16,8 +17,9 @@
         "vuex": "^4.0.0-0"
     },
     "devDependencies": {
+        "@types/crypto-js": "^4.1.1",
         "@typescript-eslint/eslint-plugin": "^4.18.0",
-        "@typescript-eslint/parser": "3.10.1",
+        "@typescript-eslint/parser": "^4.18.0",
         "@vue/cli-plugin-babel": "~4.5.15",
         "@vue/cli-plugin-eslint": "~4.5.15",
         "@vue/cli-plugin-router": "~4.5.15",

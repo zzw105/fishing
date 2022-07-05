@@ -17,4 +17,13 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
   },
+  overrides: [
+    {
+      files: ["src/**/*.vue"],
+      rules: {
+        // vue内部无法找到全局ts声明
+        "no-undef": "off",
+      },
+    },
+  ],
 };

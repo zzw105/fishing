@@ -44,7 +44,7 @@ export const fishingGroundStore = defineStore("fishingGround", {
   },
   getters: {
     //
-    getAllFishingGround(state): fishingGroundStateProps["allFishingGround"] {
+    getAllFishingGround(state) {
       return state.allFishingGround;
     },
   },

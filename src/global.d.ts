@@ -29,5 +29,5 @@ interface userStoreProps {
   title: string;
   money: number;
   fish: fishProps[];
-  nowGround: fishingGroundProps | null;
+  nowGround: fishingGroundProps;
 }

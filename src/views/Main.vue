@@ -5,14 +5,9 @@
   </div>
 </template>
 
-<script>
-import Menu from "@/components/Menu";
-import Game from "@/components/Game";
-
-export default {
-  name: "Main",
-  components: { Game, Menu },
-};
+<script lang="ts" setup>
+import Menu from "@/components/Menu.vue";
+import Game from "@/components/Game.vue";
 </script>
 
 <style lang="less" scoped>
