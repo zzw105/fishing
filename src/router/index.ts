@@ -5,7 +5,7 @@ import FishingGround from "@/views/FishingGround.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
   },
@@ -24,6 +24,18 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from) => {
+  // 无路径跳转至首页
+  if (to.path === "/") {
+    return { name: "Home" };
+  }
+
+  // 刷新页面跳转首页
+  if (to.path !== "/home" && from.name === undefined) {
+    return { name: "Home" };
+  }
 });
 
 export default router;
