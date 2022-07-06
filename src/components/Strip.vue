@@ -28,13 +28,21 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from "vue";
 import { ElMessage } from "element-plus";
-// import { useStore } from "vuex";
-// import { key } from "@/store";
-// import { storeToRefs } from "pinia";
-// import { userStore } from "@/pinia/user";
+import { sortFish, randomNum } from "@/utils";
+import { userStore } from "@/pinia/user";
+
+const _userStore = userStore();
+const { setMoney } = _userStore;
+
+const props = defineProps<{
+  fishs: fishProps[];
+}>();
 
 // 目标块
-const targetStyle = reactive<targetStyleProps>({ left: 50, width: 30 });
+const targetStyle = reactive<targetStyleProps>({ left: 50, width: 0 });
+
+// 当前鱼
+const nowFish = ref<fishProps>();
 
 // 玩家条
 const targetLineStyle = reactive<targetLineStyleProps>({ left: 6, width: 2 });
@@ -59,8 +67,9 @@ const toFishing = () => {
     ) {
       ElMessage({
         type: "success",
-        message: "钓到啦",
+        message: `钓到了${nowFish.value?.name}，价值${nowFish.value?.price}`,
       });
+      if (nowFish.value) setMoney(nowFish.value.price);
     } else {
       ElMessage({
         type: "error",
@@ -72,13 +81,27 @@ const toFishing = () => {
 
 // 开始钓鱼
 const fishingStar = () => {
+  const fishArr = sortFish(props.fishs, "probability");
+  const RNum = randomNum(1, 100);
+
+  nowFish.value = fishArr.find((item) => {
+    if (RNum <= item.probability) return true;
+  });
+  if (!nowFish.value) return;
+
+  const milliseconds = 15 / nowFish.value.difficulty;
+  const width = 30 / nowFish.value.difficulty;
+  const left = randomNum(10, 250 - width);
+
+  targetStyle.width = width;
+  targetStyle.left = left;
   setIntervalNum.value = setInterval(() => {
     let num = targetLineStyle.left;
     if (num <= 10) targetLineDirection.value = 1;
     if (num >= 250 - targetLineStyle.width) targetLineDirection.value = -1;
     num += targetLineDirection.value;
     targetLineStyle.left = num;
-  }, 15);
+  }, milliseconds);
 };
 
 onMounted(() => {

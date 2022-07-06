@@ -1,6 +1,8 @@
 <template>
   <div class="menu">
-    <div>当前金钱：{{ money }}</div>
+    <!-- TAG:打包需隐藏 -->
+    <div @click="setMoney(1)">当前金钱：{{ money }}</div>
+    <!-- <div>当前金钱：{{ money }}</div> -->
     <div @click="save">保存</div>
     <div @click="load">读取</div>
   </div>
@@ -12,7 +14,7 @@ import { computed } from "@vue/reactivity";
 import { cryptoLoadStorage, cryptoSaveStorage } from "@/utils";
 
 const _userStore = userStore();
-const { setUserAll } = _userStore;
+const { setUserAll, setMoney } = _userStore;
 const money = computed(() => _userStore.getMoney);
 
 const save = () => {

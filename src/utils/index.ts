@@ -15,3 +15,23 @@ export const cryptoLoadStorage = (key: string): string => {
   const originalText = bytes.toString(CryptoJS.enc.Utf8);
   return originalText;
 };
+
+export const sortFish = <T>(arr: T[], key: string): T[] => {
+  return arr.sort((a, b) => {
+    return a[key] - b[key];
+  });
+};
+
+export function randomNum(minNum: number, maxNum: number): number {
+  switch (arguments.length) {
+    case 1:
+      return parseInt(Math.random() * minNum + 1 + "", 10);
+      break;
+    case 2:
+      return parseInt(Math.random() * (maxNum - minNum + 1) + minNum + "", 10);
+      break;
+    default:
+      return 0;
+      break;
+  }
+}

@@ -7,19 +7,20 @@ export const globalStore = defineStore("global", {
         {
           id: 101,
           name: "一号渔场",
-
           fish: [
             {
               id: 201,
               name: "小鱼1号",
               price: 5,
               difficulty: 1,
+              probability: 100,
             },
             {
               id: 202,
               name: "小鱼2号",
               price: 10,
               difficulty: 1.5,
+              probability: 20,
             },
           ],
           ground: [
@@ -64,12 +65,14 @@ export const globalStore = defineStore("global", {
               name: "小鱼3号",
               price: 15,
               difficulty: 2,
+              probability: 50,
             },
             {
               id: 204,
               name: "小鱼4号",
               price: 20,
               difficulty: 3,
+              probability: 100,
             },
           ],
           ground: [
@@ -122,6 +125,7 @@ export const globalStore = defineStore("global", {
             name: "0",
             price: 0,
             difficulty: 0,
+            probability: 0,
           },
         ],
       },

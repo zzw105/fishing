@@ -13,6 +13,7 @@ interface fishProps {
   name: string;
   price: number;
   difficulty: number;
+  probability: number;
 }
 
 interface groundProps {

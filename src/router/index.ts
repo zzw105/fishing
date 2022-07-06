@@ -2,6 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "@/views/Home.vue";
 import Game from "@/views/Main.vue";
 import FishingGround from "@/views/FishingGround.vue";
+import { cryptoLoadStorage } from "@/utils";
+import { userStore } from "@/pinia/user";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,6 +36,7 @@ router.beforeEach((to, from) => {
 
   // 刷新页面跳转首页
   if (to.path !== "/home" && from.name === undefined) {
+    userStore().setUserAll(JSON.parse(cryptoLoadStorage("data")));
     return { name: "Home" };
   }
 });
