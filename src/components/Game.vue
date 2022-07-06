@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { userStore } from "@/pinia/user";
+import { globalStore } from "@/pinia/global";
 
 // 引入组件
 // import Strip from "@/components/Strip.vue";
@@ -19,9 +19,9 @@ import FishingBox from "./FishingBox.vue";
 import { computed, onMounted } from "vue";
 
 // 仓库相关
-const _userStore = userStore();
-const { setTitle } = _userStore;
-const nowGround = computed(() => _userStore.getNowGround);
+const _globalStore = globalStore();
+const { setTitle } = _globalStore;
+const nowGround = computed(() => _globalStore.getNowGround);
 
 onMounted(() => {
   setTitle(nowGround.value.name);

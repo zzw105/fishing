@@ -1,7 +1,7 @@
 <template>
   <div class="FishingGround">
     <FishingGroundBox
-      v-for="item in getAllFishingGround"
+      v-for="item in allFishingGround"
       :key="item.id"
       :ground-info="item"
     />
@@ -10,14 +10,13 @@
 
 <script lang="ts" setup>
 import { onMounted } from "vue";
-import { fishingGroundStore } from "@/pinia/fishingGround";
-import { userStore } from "@/pinia/user";
+import { globalStore } from "@/pinia/global";
 import FishingGroundBox from "@/components/FishingGroundBox.vue";
+import { computed } from "@vue/reactivity";
 
-const _fishingGroundStore = fishingGroundStore();
-const _userStore = userStore();
-const { getAllFishingGround } = _fishingGroundStore;
-const { setTitle } = _userStore;
+const _globalStore = globalStore();
+const allFishingGround = computed(() => _globalStore.getAllFishingGround);
+const { setTitle } = _globalStore;
 
 onMounted(() => {
   setTitle("请选择渔场");

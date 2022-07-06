@@ -7,19 +7,19 @@
 
 <script lang="ts" setup>
 import { ref, watch } from "vue";
-import { userStore } from "@/pinia/user";
+import { globalStore } from "./pinia/global";
 import { useRoute } from "vue-router";
-import { storeToRefs } from "pinia";
 
 // 引入组件
 import Title from "@/components/Title.vue";
+import { computed } from "@vue/reactivity";
 
 // 是否开始游戏
 const isPlay = ref<boolean>(false);
 const route = useRoute();
-const store = userStore();
+const _globalStore = globalStore();
 // 标题内容
-const { title } = storeToRefs(store);
+const title = computed(() => _globalStore.getTitle);
 // 监听router修改上方栏显示状态
 watch(route, (val) => {
   isPlay.value = val.path !== "/";

@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
-export const fishingGroundStore = defineStore("fishingGround", {
-  state: (): fishingGroundStateProps => {
+export const globalStore = defineStore("global", {
+  state: (): globalStateProps => {
     return {
+      title: "",
       allFishingGround: [
         {
           id: 101,
@@ -105,13 +106,49 @@ export const fishingGroundStore = defineStore("fishingGround", {
           ],
         },
       ],
+      nowGround: {
+        id: 1,
+        name: "未选择渔场",
+        ground: [
+          {
+            id: 0,
+            number: 0,
+            autoFish: false,
+          },
+        ],
+        fish: [
+          {
+            id: 0,
+            name: "0",
+            price: 0,
+            difficulty: 0,
+          },
+        ],
+      },
     };
   },
   getters: {
+    // 获取标题
+    getTitle(state) {
+      return state.title;
+    },
+    // 获取当前渔场
+    getNowGround(state) {
+      return state.nowGround;
+    },
     //
     getAllFishingGround(state) {
       return state.allFishingGround;
     },
   },
-  actions: {},
+  actions: {
+    // 修改标题内容
+    setTitle(pal: string) {
+      this.title = pal;
+    },
+    // 设置当前渔场
+    setGround(pal: fishingGroundProps) {
+      this.nowGround = pal;
+    },
+  },
 });

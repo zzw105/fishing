@@ -28,8 +28,11 @@ interface fishingGroundProps {
   ground: groundProps[];
 }
 
-interface fishingGroundStateProps {
+interface globalStateProps {
+  title: string;
+
   allFishingGround: fishingGroundProps[];
+  nowGround: fishingGroundProps;
 }
 
 interface itemProps {
@@ -39,9 +42,7 @@ interface itemProps {
 }
 
 interface userStoreProps {
-  title: string;
   money: number;
   fish: fishProps[];
   items: itemProps[];
-  nowGround: fishingGroundProps;
 }

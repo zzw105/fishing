@@ -11,18 +11,18 @@
 
 <script lang="ts" setup>
 import { defineProps } from "vue";
-import { userStore } from "@/pinia/user";
+import { globalStore } from "@/pinia/global";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const _userStore = userStore();
+const _globalStore = globalStore();
 const props = defineProps<{
   groundInfo: fishingGroundProps;
 }>();
 
 const toFishing = () => {
   //  仓库中记录当前渔场并跳转
-  _userStore.setGround(props.groundInfo);
+  _globalStore.setGround(props.groundInfo);
   router.push({ name: "Game" });
 };
 </script>
