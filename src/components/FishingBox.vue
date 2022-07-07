@@ -7,7 +7,7 @@
         props.groundInfo.autoFish ? "可以开启自动" : "不可以开启自动"
       }}
     </div>
-    <Strip :groundInfo="groundInfo" :fishs="fishs" />
+    <Strip :groundInfo="groundInfo" :fishes="fishes" />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import Strip from "./Strip.vue";
 const props = defineProps<{
   groundInfo: groundProps;
   index: number;
-  fishs: fishProps[];
+  fishes: fishProps[];
 }>();
 </script>
 

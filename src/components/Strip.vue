@@ -35,7 +35,7 @@ const _userStore = userStore();
 const { setMoney } = _userStore;
 
 const props = defineProps<{
-  fishs: fishProps[];
+  fishes: fishProps[];
 }>();
 
 // 目标块
@@ -81,7 +81,7 @@ const toFishing = () => {
 
 // 开始钓鱼
 const fishingStar = () => {
-  const fishArr = sortFish(props.fishs, "probability");
+  const fishArr = sortFish(props.fishes, "probability");
   const RNum = randomNum(1, 100);
 
   nowFish.value = fishArr.find((item) => {

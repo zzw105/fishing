@@ -22,7 +22,7 @@ const _globalStore = globalStore();
 const title = computed(() => _globalStore.getTitle);
 // 监听router修改上方栏显示状态
 watch(route, (val) => {
-  isPlay.value = val.path !== "/";
+  isPlay.value = val.path !== "/home";
 });
 </script>
 

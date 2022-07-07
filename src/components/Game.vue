@@ -6,7 +6,7 @@
       :key="item.id"
       :groundInfo="item"
       :index="index"
-      :fishs="nowGround.fish"
+      :fishes="nowGround.fish"
     />
   </div>
 </template>
