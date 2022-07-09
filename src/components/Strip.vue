@@ -32,7 +32,7 @@ import { sortFish, randomNum } from "@/utils";
 import { userStore } from "@/pinia/user";
 
 const _userStore = userStore();
-const { setMoney } = _userStore;
+const { setMoney, setUserFish } = _userStore;
 
 const props = defineProps<{
   fishes: fishProps[];
@@ -65,12 +65,16 @@ const toFishing = () => {
       targetLineStyle.left + targetLineStyle.width >= targetStyle.left &&
       targetLineStyle.left <= targetStyle.left + targetStyle.width
     ) {
+      // 弹出提示框
       ElMessage({
         type: "success",
         message: `钓到了${nowFish.value?.name}，价值${nowFish.value?.price}`,
       });
-      if (nowFish.value) setMoney(nowFish.value.price);
+
+      // 处理数量
+      if (nowFish.value) setUserFish(nowFish.value);
     } else {
+      // 弹出提示框
       ElMessage({
         type: "error",
         message: "没钓到",
@@ -84,6 +88,7 @@ const fishingStar = () => {
   const fishArr = sortFish(props.fishes, "probability");
   const RNum = randomNum(1, 100);
 
+  // 随机获取到当前正在钓的鱼
   nowFish.value = fishArr.find((item) => {
     if (RNum <= item.probability) return true;
   });

@@ -5,6 +5,7 @@
       <el-icon><Money /></el-icon>：{{ money }}
     </div>
     <el-button @click="back">返回鱼场</el-button>
+    <el-button @click="toBag">查看背包</el-button>
     <el-button @click="save">保存</el-button>
     <el-button @click="leadingOut">导出</el-button>
     <el-button @click="load">读取</el-button>
@@ -85,6 +86,11 @@ const copy = () => {
   textarea.value?.focus();
   textarea.value?.setSelectionRange(0, -1);
   document.execCommand("copy");
+};
+
+// 跳转背包
+const toBag = () => {
+  router.push({ name: "Bag" });
 };
 
 onMounted(() => {

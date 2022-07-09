@@ -14,6 +14,7 @@ interface fishProps {
   price: number;
   difficulty: number;
   probability: number;
+  quantity: number;
 }
 
 interface groundProps {
@@ -31,7 +32,6 @@ interface fishingGroundProps {
 
 interface globalStateProps {
   title: string;
-
   allFishingGround: fishingGroundProps[];
   nowGround: fishingGroundProps;
 }
@@ -39,7 +39,7 @@ interface globalStateProps {
 interface itemProps {
   id: number;
   name: string;
-  number: number;
+  quantity: number;
 }
 
 interface userStoreProps {

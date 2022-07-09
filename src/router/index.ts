@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "@/views/Home.vue";
 import Game from "@/views/Main.vue";
+import Bag from "@/views/Bag.vue";
 import FishingGround from "@/views/FishingGround.vue";
 import { cryptoLoadStorage } from "@/utils";
 import { userStore } from "@/pinia/user";
@@ -21,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/fishingGround",
     name: "FishingGround",
     component: FishingGround,
+  },
+  {
+    path: "/bag",
+    name: "Bag",
+    component: Bag,
   },
 ];
 

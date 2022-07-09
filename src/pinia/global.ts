@@ -14,6 +14,7 @@ export const globalStore = defineStore("global", {
               price: 5,
               difficulty: 1,
               probability: 100,
+              quantity: 1,
             },
             {
               id: 202,
@@ -21,6 +22,7 @@ export const globalStore = defineStore("global", {
               price: 10,
               difficulty: 1,
               probability: 20,
+              quantity: 1,
             },
           ],
           ground: [
@@ -66,6 +68,7 @@ export const globalStore = defineStore("global", {
               price: 15,
               difficulty: 1.2,
               probability: 50,
+              quantity: 1,
             },
             {
               id: 204,
@@ -73,6 +76,7 @@ export const globalStore = defineStore("global", {
               price: 20,
               difficulty: 1.1,
               probability: 100,
+              quantity: 1,
             },
           ],
           ground: [
@@ -126,6 +130,7 @@ export const globalStore = defineStore("global", {
             price: 0,
             difficulty: 0,
             probability: 0,
+            quantity: 1,
           },
         ],
       },
